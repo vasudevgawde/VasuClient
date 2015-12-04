@@ -10,6 +10,7 @@ public static void main(String args[])
 	boolean proceed=true;
 	Scanner sc = new Scanner(System.in);
 	LinkedList L = new LinkedList();
+	try{
 	while(proceed)
 	{
 		System.out.println("WHat you want to perform");
@@ -32,16 +33,21 @@ public static void main(String args[])
 				break;
 			case 3:
 				System.out.println("Please enter the data to search");
-				//L.SearchLL(sc.nextInt());
+				L.SearchLL(sc.nextInt());
 				break;
 			case 4:
 				L.printLL();	
 				break;
-			case 5:
+			default:
 				proceed = false;
 			
 		}
 
+	}
+	}
+	catch(Exception E)
+	{
+		System.out.println("Incorrect input entered");
 	}
 }
 
@@ -149,8 +155,22 @@ class LinkedList
 					System.out.println("No Data found");
 	}
 
-	public void SearchLL()
+	public void SearchLL(int data)
 	{
-
+		boolean SearchFlag=false;
+		int counter=0;
+		Node temp=head;
+		while(temp!=null)
+		{
+			if(temp.data==data)
+			{
+				SearchFlag=true;
+				System.out.print("the data is found in LinkList at location"+counter);
+			}
+			temp=temp.next;	
+			size+=1;
+		}
+			if(SearchFlag==false)
+			System.out.print("The is abscent in the linkList");
 	}
 }// end of Lined List class
